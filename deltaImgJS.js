@@ -42,7 +42,8 @@ function deltaImgJS(canvasId1,canvasId2){
                 'this.addEventListener(\'message\',',
                 /*dealing with pixel data; Arr[j] ranges from 0 to 255; Arr[j] = 0 when two images are equivalent*/
                 'function(e){var d=e.data;Arr.push(Math.abs(f(d[1])-f(d[0])));',
-                'if(!(Arr.length<N)){this.postMessage({p:p(Arr,alpha),critical:alpha,N:N,dataset:Arr});}}',
+                /*posted value: {p:p-value,critical:critical value,sampling:number of scanned areas,dataset:datasets of differences}*/
+                'if(!(Arr.length<N)){this.postMessage({p:p(Arr,alpha),critical:alpha,sampling:N,dataset:Arr});}}',
                 /*tail part of eventlistener*/
                 ',true);'
             ].join('');
@@ -51,22 +52,17 @@ function deltaImgJS(canvasId1,canvasId2){
             W=new Worker(U);
             W.addEventListener('message',function(e){
                 fImg.result=e.data;
-                slf.window.URL.revokeObjectURL(U),B=null;
+                slf.window.URL.revokeObjectURL(U),spt=B=U=W=null;
             },true);
             //if error in worker
             W.addEventListener('error',function(e){console.log(e.message);},true);
             /*=== </generation of worker> ===*/
             dx=cW/N,dy=cH/N;
-            c0.strokeStyle='#f00';
-            c0.lineWidth=1;
+            c0.strokeStyle='#f00',c0.lineWidth=1,c0.clearRect(0,0,c0.canvas.width,c0.canvas.height);
             i=0;
             while(i<max){
                 x=Math.random()*cW,y=Math.random()*cH;
-                d[0]=c1.getImageData(x,y,dx,dy).data;
-                d[1]=c2.getImageData(x,y,dx,dy).data;
-                c0.strokeRect(x,y,dx,dy);
-                W.postMessage(d);
-                i+=1;
+                d[0]=c1.getImageData(x,y,dx,dy).data,d[1]=c2.getImageData(x,y,dx,dy).data,c0.strokeRect(x,y,dx,dy),W.postMessage(d),i+=1;
             }
             return {dx:dx,dy:dy};
         };
