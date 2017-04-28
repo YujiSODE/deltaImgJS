@@ -7,6 +7,20 @@
 *    See LICENSE or http://opensource.org/licenses/mit-license.php
 */
 //This function returns function that compares two image data on two canvas tags with RGBa-value.
+/*
+*=== Paremeter ===
+* - canvasId1 and canvasId2: id of two canvas tags.
+*=== Returned function ===
+* - function(N,max,Vcrit): function that compares two image data on two canvas tags and returns size of
+*   sampling area to scan (dx and dy).
+*=== Parameters for returned function ===
+* - N: positive integers; size of sampling area (dx and dy) is defined by dx=(canvas.width)/N and dy=(canvas.height)/N.
+* - max: positive integers; number of sampling areas to scan.
+* - Vcrit: critical value that ranges from 0 to 1.
+*=== Property of returned function ===
+* - result: {p:p-value,critical:critical value,sampling:number of scanned areas,dataset:datasets of differences}.
+*============================================================
+*/
 function deltaImgJS(canvasId1,canvasId2){
     //canvasId1 and canvasId2: id of two target canvas tags
     canvasId2=(canvasId2!==undefined)?canvasId2:canvasId1;
@@ -22,14 +36,16 @@ function deltaImgJS(canvasId1,canvasId2){
             E.id=elId;
             return t.appendChild(E);
         },
+        /*function that compares two image data on two canvas tags and returns size of area to scan: dx and dy*/
         fImg=function(N,max,Vcrit){
             //N and max: positive integers
-            //Vcrit: probability that ranges from 0 to 1
+            //Vcrit: critical value that ranges from 0 to 1
+            //dx=(canvas.width)/N and dy=(canvas.height)/N
             N=/^[1-9](?:[0-9]+)?$/.test(N)?+N:1;
             max=/^[1-9](?:[0-9]+)?$/.test(max)?+max:10;
             Vcrit=/^(?:1(?:\.0+)?|0(?:\.[0-9]+)?)$/.test(Vcrit)?Vcrit:0.05;
             var spt,B,U,W;
-            //resetting data property
+            //resetting result property
             fImg.result={};
             /*=== <generation of worker> ===*/
             spt=[
