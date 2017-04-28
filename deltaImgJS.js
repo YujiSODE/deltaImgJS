@@ -11,16 +11,14 @@
 *=== Paremeter ===
 * - canvasId1 and canvasId2: id of two canvas tags.
 *=== Returned function ===
-* - function(N,max,Vcrit): function that simulates random walk.
+* - function(N,max,Vcrit): function that compares two image data on two canvas tags and returns size of
+*   sampling area to scan (dx and dy).
 *=== Parameters for returned function ===
-* - title: description of simulation.
-* - x0 and y0: initial values.
-* - maxStep: the max step that is equivalent to positive integer; simulating process is not canceled
-*   without calling method "end()" when maxStep = 0.
-* - sampleX and sampleY: [optional] csv formatted numerical texts.
-*=== Property and method of returned function ===
-* - logs: array that has simulation results as Log objects.
-* - end(): method to end simulation; it shows result.
+* - N: positive integers; size of sampling area (dx and dy) is defined by dx=(canvas.width)/N and dy=(canvas.height)/N.
+* - max: positive integers; number of sampling areas to scan.
+* - Vcrit: critical value that ranges from 0 to 1.
+*=== Property of returned function ===
+* - result: {p:p-value,critical:critical value,sampling:number of scanned areas,dataset:datasets of differences}.
 *============================================================
 */
 function deltaImgJS(canvasId1,canvasId2){
@@ -38,10 +36,11 @@ function deltaImgJS(canvasId1,canvasId2){
             E.id=elId;
             return t.appendChild(E);
         },
-        /*function that compares two image data on two canvas tags and returns size of area to scan*/
+        /*function that compares two image data on two canvas tags and returns size of area to scan: dx and dy*/
         fImg=function(N,max,Vcrit){
             //N and max: positive integers
-            //Vcrit: probability that ranges from 0 to 1
+            //Vcrit: critical value that ranges from 0 to 1
+            //dx=(canvas.width)/N and dy=(canvas.height)/N
             N=/^[1-9](?:[0-9]+)?$/.test(N)?+N:1;
             max=/^[1-9](?:[0-9]+)?$/.test(max)?+max:10;
             Vcrit=/^(?:1(?:\.0+)?|0(?:\.[0-9]+)?)$/.test(Vcrit)?Vcrit:0.05;
