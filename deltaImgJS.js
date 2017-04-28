@@ -29,7 +29,7 @@ function deltaImgJS(canvasId1,canvasId2){
             max=/^[1-9](?:[0-9]+)?$/.test(max)?+max:10;
             Vcrit=/^(?:1(?:\.0+)?|0(?:\.[0-9]+)?)$/.test(Vcrit)?Vcrit:0.05;
             var spt,B,U,W;
-            //resetting data property
+            //resetting result property
             fImg.result={};
             /*=== <generation of worker> ===*/
             spt=[
