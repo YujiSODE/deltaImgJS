@@ -7,6 +7,22 @@
 *    See LICENSE or http://opensource.org/licenses/mit-license.php
 */
 //This function returns function that compares two image data on two canvas tags with RGBa-value.
+/*
+*=== Paremeter ===
+* - canvasId1 and canvasId2: id of two canvas tags.
+*=== Returned function ===
+* - function(N,max,Vcrit): function that simulates random walk.
+*=== Parameters for returned function ===
+* - title: description of simulation.
+* - x0 and y0: initial values.
+* - maxStep: the max step that is equivalent to positive integer; simulating process is not canceled
+*   without calling method "end()" when maxStep = 0.
+* - sampleX and sampleY: [optional] csv formatted numerical texts.
+*=== Property and method of returned function ===
+* - logs: array that has simulation results as Log objects.
+* - end(): method to end simulation; it shows result.
+*============================================================
+*/
 function deltaImgJS(canvasId1,canvasId2){
     //canvasId1 and canvasId2: id of two target canvas tags
     canvasId2=(canvasId2!==undefined)?canvasId2:canvasId1;
@@ -22,6 +38,7 @@ function deltaImgJS(canvasId1,canvasId2){
             E.id=elId;
             return t.appendChild(E);
         },
+        /*function that compares two image data on two canvas tags and returns size of area to scan*/
         fImg=function(N,max,Vcrit){
             //N and max: positive integers
             //Vcrit: probability that ranges from 0 to 1
