@@ -59,8 +59,8 @@ function deltaImgJS(canvasId1,canvasId2){
                 'p=function(A,crit){var s=0,i=0,n=A.length;while(i<n){s+=A[i]>crit?0:1,i+=1;}return s/n;};',
                 /*head part of eventlistener*/
                 'this.addEventListener(\'message\',',
-                /*dealing with pixel data; Arr[j] ranges from 0 to 255; Arr[j] = 0 when two images are equivalent*/
-                'function(e){var d=e.data;Arr.push(Math.abs(f(d[1])-f(d[0])));',
+                /*dealing with pixel data; Arr[j] ranges from 0 to 1; Arr[j] = 0 when two images are equivalent*/
+                'function(e){var d=e.data;Arr.push(Math.abs(f(d[1])-f(d[0]))/255);',
                 /*posted value: {p:p-value,critical:critical value,sampling:number of scanned areas,dataset:datasets of differences}*/
                 'if(!(Arr.length<N)){this.postMessage({p:p(Arr,alpha),critical:alpha,sampling:N,dataset:Arr});}}',
                 /*tail part of eventlistener*/
