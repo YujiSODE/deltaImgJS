@@ -1,5 +1,5 @@
 # deltaImgJS
-This function returns function that compares two image data on two canvas tags with RGBa-value.  
+An interface that compares two image data on two canvas tags with RGBa-value.  
 https://github.com/YujiSODE/deltaImgJS
 
 >Copyright (c) 2017 Yuji SODE \<yuji.sode@gmail.com\>  
