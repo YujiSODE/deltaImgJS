@@ -17,13 +17,17 @@ This function returns function that compares two image data on two canvas tags w
 ## Returned function
 - `function(N,max,Vcrit)`: function that compares two image data on two canvas tags,  
   and returns size of sampling area to scan (`dx` and `dy`).
-### 1. Parameters for returned function
+#### 1. Parameters for returned function
 - `N`: positive integers; size of sampling area (`dx` and `dy`) is defined by  
   `dx=(canvas.width)/N` and `dy=(canvas.height)/N`.
 - `max`: positive integers; number of sampling areas to scan.
 - `Vcrit`: critical value that ranges from 0 to 1.
-### 2. Property of returned function
+#### 2. Property of returned function
 - `result`: Result object.  
 
 ## Result object
-{p:p-value,critical:critical value,sampling:number of scanned areas,dataset:datasets of differences}
+This object can be accessed with a property `result` in returned function, and has 4 values.
+* `p`: p-value.
+* `critical`: critical value.
+* `sampling`: number of scanned areas.
+* `dataset`: datasets of differences.
