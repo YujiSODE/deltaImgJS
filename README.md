@@ -10,6 +10,7 @@ ______
 ## Script
 * `deltaImgJS.js`: `function deltaImgJS(canvasId1,canvasId2)`  
 This function returns function that compares two image data on two canvas tags with average RGBa-value.  
+Calculated p-value shows probability of hypothesis that two images are identical.
 
 ## Paremeters
 - `canvasId1` and `canvasId2`: id of two canvas tags.  
@@ -27,7 +28,7 @@ This function returns function that compares two image data on two canvas tags w
 
 ## Result object
 This object can be accessed with a property `result` in returned function, and has 4 values.
-* `p`: p-value.
+* `p`: p-value; probability of hypothesis that two images are identical.
 * `critical`: critical value.
 * `sampling`: number of scanned areas.
 * `dataset`: datasets of differences.
