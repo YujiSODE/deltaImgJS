@@ -8,7 +8,7 @@
 */
 //This function returns function that compares two image data on two canvas tags with RGBa-value.
 /*
-*=== Paremeter ===
+*=== Paremeters ===
 * - canvasId1 and canvasId2: id of two canvas tags.
 *=== Returned function ===
 * - function(N,max,Vcrit): function that compares two image data on two canvas tags and returns size of
