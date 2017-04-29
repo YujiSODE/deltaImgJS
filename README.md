@@ -8,8 +8,7 @@ https://github.com/YujiSODE/deltaImgJS
 ______
 
 ## Script
-* `deltaImgJS.js`
-  >`function deltaImgJS(canvasId1,canvasId2)`
+* `deltaImgJS.js`: `function deltaImgJS(canvasId1,canvasId2)`  
 This function returns function that compares two image data on two canvas tags with average RGBa-value.  
 
 ## Paremeters
