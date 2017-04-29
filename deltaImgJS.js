@@ -6,7 +6,7 @@
 *    This software is released under the MIT License.
 *    See LICENSE or http://opensource.org/licenses/mit-license.php
 */
-//This function returns function that compares two image data on two canvas tags with RGBa-value.
+//This function returns function that compares two image data on two canvas tags with average RGBa-value.
 /*
 *=== Paremeters ===
 * - canvasId1 and canvasId2: id of two canvas tags.
