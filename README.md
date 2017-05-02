@@ -1,6 +1,7 @@
 # deltaImgJS
 An interface that compares two image data on two canvas tags with RGBa-value.  
-https://github.com/YujiSODE/deltaImgJS
+https://github.com/YujiSODE/deltaImgJS  
+Wiki: https://github.com/YujiSODE/deltaImgJS/wiki
 
 >Copyright (c) 2017 Yuji SODE \<yuji.sode@gmail.com\>  
 >This software is released under the MIT License.  
